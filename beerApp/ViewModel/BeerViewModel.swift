@@ -13,16 +13,15 @@ import SwiftyJSON
 class BeerViewModel :ObservableObject {
     
     @Published var beers : [BeerModel] = []
-    @Published var isLoading = true
-    @Published var error = false //prevedere errore di caricamento dati
+    @Published var status = ""
 
-    
     func getBeers(){
         
         //ONLY 1 RANDOM BEER ATM //"https://api.punkapi.com/v2/beers?page=2&per_page=\(count)"
         let endpoint = "https://api.punkapi.com/v2/beers"
         let headers: HTTPHeaders = ["Content-Type": "application/json"]
-        isLoading = true
+        status = "loading"
+
 
         AF.request(endpoint, method: .get, encoding: JSONEncoding.default, headers: headers)
             .validate()
@@ -30,30 +29,26 @@ class BeerViewModel :ObservableObject {
                 
             switch response.result {
             
-            case .success(let value):
-                do {
-                    let jsonDecoder = JSONDecoder()
-//                        print("Struttura originale del JSON \(String(data: response.data!, encoding: .utf8)!)")
-                    let data = try jsonDecoder.decode([BeerModel].self, from: response.data!)
-//                        print("Struttura convertita del JSON \(data)")
-                    DispatchQueue.main.async {
-                        self.beers = data
-                        self.isLoading = false
-                        self.error = false
+                case .success(_):
+                    do {
+                        let jsonDecoder = JSONDecoder()
+    //                        print("Struttura originale del JSON \(String(data: response.data!, encoding: .utf8)!)")
+                        let data = try jsonDecoder.decode([BeerModel].self, from: response.data!)
+    //                        print("Struttura convertita del JSON \(data)")
+                        DispatchQueue.main.async {
+                            self.beers = data
+                            self.status = "loaded"
+                        }
                     }
-                }
-                catch
-                {
-                    print("Errore nella decodifica: \(error)")
-                    self.isLoading = false
-                    self.error = true
-
-                    
-                }
-            case .failure(let error):
-                print("Errore nella risposta da server: \(error.localizedDescription)")
-                self.isLoading = true
-                self.savedData()
+                    catch
+                    {
+                        print("Errore nella decodifica: \(error)")
+                        self.status = "error"
+                    }
+                case .failure(let error):
+                    print("Errore nella risposta da server: \(error.localizedDescription)")
+                    self.status = "error"
+                    self.savedData()
             }
         }
     }
