@@ -8,6 +8,7 @@
 import SwiftUI
 import Kingfisher
 import SwiftUIRefresh
+import Lottie
 
 struct MainView: View {
     
@@ -16,15 +17,16 @@ struct MainView: View {
     
     var body: some View {
         VStack{
-            switch beersData.status {
+            switch self.beersData.status {
                 case "loaded":
                     NavigationView {
                         List {
-                            ForEach(beersData.beers, id:\.self) { beer in
+                            ForEach(self.beersData.beers, id:\.self) { beer in
                                 HStack {
                                     KFImage(URL(string: beer.image_url ?? "https://images.punkapi.com/v2/keg.png"))
                                         .placeholder{
                                             Image("placeholder")
+                                            Text("Loading")
                                         }
                                         .cancelOnDisappear(true)
                                         .resizable()
@@ -32,10 +34,10 @@ struct MainView: View {
                                         .frame(width: 75, height: 74)
                                         .cornerRadius(20)
                                     VStack (alignment: .leading, spacing: 2){
-                                        Text(beer.name)
+                                        Text(beer.name ?? "Name not available")
                                                .bold()
                                         Spacer()
-                                        Text(beer.tagline)
+                                        Text(beer.tagline ?? "Description not available")
                                             .font(.subheadline).foregroundColor(.gray)
                                     }.padding(.vertical)
                                 }.padding(3)
@@ -55,11 +57,22 @@ struct MainView: View {
                         }
                     }
                 case "error":
-                    Text("Something went wrong!")
-                    //AGGIUGNERE ANIMAZIONE
+                    List {
+                        LottieView(name: "error", loopMode: .loop)
+                            .frame(width: 350, height: 350, alignment: .center)
+                        Text("Something went wrong!")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(.top ,10)
+                    }.pullToRefresh(isShowing: $isShowing) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            self.beersData.getBeers()
+                            self.isShowing = false
+                        }
+                    }
                 default:
-                    Text("Loading data")
-                    //AGGIUGNERE ANIMAZIONE
+                    LottieView(name: "loading", loopMode: .loop)
             }
         }
     }

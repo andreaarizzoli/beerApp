@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		05243A5527373B5C00841C60 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 05243A5427373B5C00841C60 /* SwiftUIRefresh */; };
+		052960B42737E32A00087D03 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 052960B32737E32A00087D03 /* loading.json */; };
+		052960B62737E33000087D03 /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = 052960B52737E33000087D03 /* error.json */; };
 		058A75922734A93300E9A52B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A75912734A93300E9A52B /* AppDelegate.swift */; };
 		058A75942734A93300E9A52B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A75932734A93300E9A52B /* SceneDelegate.swift */; };
 		058A75962734A93300E9A52B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A75952734A93300E9A52B /* MainView.swift */; };
@@ -19,12 +21,16 @@
 		058A75AD2734A9A600E9A52B /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 058A75AC2734A9A600E9A52B /* SwiftyJSON */; };
 		058A75B22734A9F500E9A52B /* BeerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A75B12734A9F500E9A52B /* BeerViewModel.swift */; };
 		058A75B42734AA0F00E9A52B /* BeerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A75B32734AA0F00E9A52B /* BeerModel.swift */; };
+		05A4D4A72737E00A00C737E3 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A4D4A62737E00A00C737E3 /* LottieView.swift */; };
+		05A4D4AA2737E0F200C737E3 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 05A4D4A92737E0F200C737E3 /* Lottie */; };
 		05ABFA882736ABAF00E1E8AA /* ManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ABFA872736ABAF00E1E8AA /* ManagerView.swift */; };
 		05ABFA8A2736AE9500E1E8AA /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ABFA892736AE9500E1E8AA /* SplashView.swift */; };
 		05DE10EA2736DD4E00F9075C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 05DE10E92736DD4E00F9075C /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		052960B32737E32A00087D03 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		052960B52737E33000087D03 /* error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error.json; sourceTree = "<group>"; };
 		058A758E2734A93300E9A52B /* beerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = beerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		058A75912734A93300E9A52B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		058A75932734A93300E9A52B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +42,7 @@
 		058A75A22734A93700E9A52B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		058A75B12734A9F500E9A52B /* BeerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerViewModel.swift; sourceTree = "<group>"; };
 		058A75B32734AA0F00E9A52B /* BeerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerModel.swift; sourceTree = "<group>"; };
+		05A4D4A62737E00A00C737E3 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		05ABFA872736ABAF00E1E8AA /* ManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerView.swift; sourceTree = "<group>"; };
 		05ABFA892736AE9500E1E8AA /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -45,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05A4D4AA2737E0F200C737E3 /* Lottie in Frameworks */,
 				05243A5527373B5C00841C60 /* SwiftUIRefresh in Frameworks */,
 				05DE10EA2736DD4E00F9075C /* Kingfisher in Frameworks */,
 				058A75AD2734A9A600E9A52B /* SwiftyJSON in Frameworks */,
@@ -110,6 +118,7 @@
 				05ABFA872736ABAF00E1E8AA /* ManagerView.swift */,
 				05ABFA892736AE9500E1E8AA /* SplashView.swift */,
 				058A75952734A93300E9A52B /* MainView.swift */,
+				05A4D4A52737DFF000C737E3 /* Lottie */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -120,6 +129,16 @@
 				058A75B12734A9F500E9A52B /* BeerViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		05A4D4A52737DFF000C737E3 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				052960B52737E33000087D03 /* error.json */,
+				052960B32737E32A00087D03 /* loading.json */,
+				05A4D4A62737E00A00C737E3 /* LottieView.swift */,
+			);
+			path = Lottie;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +162,7 @@
 				058A75AC2734A9A600E9A52B /* SwiftyJSON */,
 				05DE10E92736DD4E00F9075C /* Kingfisher */,
 				05243A5427373B5C00841C60 /* SwiftUIRefresh */,
+				05A4D4A92737E0F200C737E3 /* Lottie */,
 			);
 			productName = beerApp;
 			productReference = 058A758E2734A93300E9A52B /* beerApp.app */;
@@ -176,6 +196,7 @@
 				058A75AB2734A9A600E9A52B /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				05DE10E82736DD4E00F9075C /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				05243A5327373B5C00841C60 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
+				05A4D4A82737E0F200C737E3 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 058A758F2734A93300E9A52B /* Products */;
 			projectDirPath = "";
@@ -191,8 +212,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				052960B62737E33000087D03 /* error.json in Resources */,
 				058A75A12734A93700E9A52B /* LaunchScreen.storyboard in Resources */,
 				058A759E2734A93700E9A52B /* Preview Assets.xcassets in Resources */,
+				052960B42737E32A00087D03 /* loading.json in Resources */,
 				058A759B2734A93700E9A52B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,6 +229,7 @@
 			files = (
 				058A75922734A93300E9A52B /* AppDelegate.swift in Sources */,
 				05ABFA8A2736AE9500E1E8AA /* SplashView.swift in Sources */,
+				05A4D4A72737E00A00C737E3 /* LottieView.swift in Sources */,
 				058A75B22734A9F500E9A52B /* BeerViewModel.swift in Sources */,
 				058A75942734A93300E9A52B /* SceneDelegate.swift in Sources */,
 				058A75962734A93300E9A52B /* MainView.swift in Sources */,
@@ -435,6 +459,14 @@
 				minimumVersion = 5.0.1;
 			};
 		};
+		05A4D4A82737E0F200C737E3 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.3;
+			};
+		};
 		05DE10E82736DD4E00F9075C /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -460,6 +492,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 058A75AB2734A9A600E9A52B /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
+		};
+		05A4D4A92737E0F200C737E3 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05A4D4A82737E0F200C737E3 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		05DE10E92736DD4E00F9075C /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

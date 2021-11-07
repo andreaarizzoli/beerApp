@@ -14,57 +14,86 @@ class BeerViewModel :ObservableObject {
     
     @Published var beers : [BeerModel] = []
     @Published var status = "loading"
+    private let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Beers.plist")
     
     init() {
         getBeers()
     }
 
+
+    //MARK: - FETCH DATA
+    
     func getBeers(){
-        
-        //ONLY 1 RANDOM BEER ATM //"https://api.punkapi.com/v2/beers?page=2&per_page=\(count)"
         let endpoint = "https://api.punkapi.com/v2/beers"
         let headers: HTTPHeaders = ["Content-Type": "application/json"]
-        status = "loading"
+        self.status = "loading"
 
         AF.request(endpoint, method: .get, encoding: JSONEncoding.default, headers: headers)
             .validate()
             .responseJSON {response in
-                
             switch response.result {
-            
                 case .success(_):
                     do {
                         let jsonDecoder = JSONDecoder()
     //                        print("Struttura originale del JSON \(String(data: response.data!, encoding: .utf8)!)")
                         let data = try jsonDecoder.decode([BeerModel].self, from: response.data!)
     //                        print("Struttura convertita del JSON \(data)")
-                        self.beers = data
-//                        self.savedData()
-
+//                        self.beers = data
+                        self.testData()
                         self.status = "loaded"
+                        self.saveData()
                     }
                     catch
                     {
-                        print("Errore nella decodifica: \(error)")
+                        print("Error decoding item array: \(error)")
                         self.status = "error"
                     }
                 case .failure(let error):
-                    print("Errore nella risposta da server: \(error.localizedDescription)")
-                    self.status = "error"
+                    print("Server error: \(error.localizedDescription)")
+                    self.loadData()
             }
         }
     }
     
 
-        //DA ELIMINARE  <---------------
-    func savedData() {
+    //MARK: - FAKE DATA FOR TESTS
+    
+    func testData() {
         beers = [
-        BeerModel(id: 1, name: "Peroni", tagline: "-", first_brewed: "-", description: "sldfkasòk", image_url: "https://images.punkapi.com/v2/2.png"),
-        BeerModel(id: 2, name: "Nastro Azzurro", tagline: "-", first_brewed: "-", description: "sldfkasòk", image_url: "https://images.punkapi.com/v2/2.png"),
-        BeerModel(id: 3, name: "Moretti", tagline: "-", first_brewed: "-", description: "sldfkasòk", image_url: nil)
+        BeerModel(id: 1, name: "Peroni", tagline: "dlafhaso", first_brewed: "-", description: nil, image_url: "https://images.punkapi.com/v2/2.png"),
+        BeerModel(id: 2, name: nil, tagline: "sdflashdfò", first_brewed: "-", description: "sldfkasòk", image_url: "https://images.punkapi.com/v2/2.png"),
+        BeerModel(id: 3, name: "Moretti", tagline: nil, first_brewed: "-", description: "sldfkasòk", image_url: nil)
         ]
-//        print("List of beers: \(beers)")
-//        print("total beer \(beers.count)")
     }
     
+    
+    //MARK: - SAVE DATA
+    
+    func saveData() {
+        let encoder = PropertyListEncoder()
+        do {
+            let data = try encoder.encode(self.beers)
+            try data.write(to: dataFilePath!)
+        } catch {
+            print("Error encoding item array, \(error)")
+        }
+    }
+    
+    
+    //MARK: - LOAD DATA
+    
+    func loadData() {
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            let decoder = PropertyListDecoder()
+            do{
+                self.beers = try decoder.decode([BeerModel].self, from: data)
+                self.status = "loaded"
+            }catch {
+                print("Error decoding item array, \(error)")
+            }
+        } else {
+            print("No data saved in local!")
+            self.status = "error"
+        }
+    }
 }
