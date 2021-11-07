@@ -7,11 +7,12 @@
 
 import SwiftUI
 import Kingfisher
-
+import SwiftUIRefresh
 
 struct MainView: View {
     
     @StateObject var beersData = BeerViewModel()
+    @State private var isShowing = false
     
     var body: some View {
         VStack{
@@ -21,11 +22,11 @@ struct MainView: View {
                         List {
                             ForEach(beersData.beers, id:\.self) { beer in
                                 HStack {
-                                    KFImage(URL(string: beer.image_url)!)
+                                    KFImage(URL(string: beer.image_url ?? "https://images.punkapi.com/v2/keg.png"))
                                         .placeholder{
-                                            background(Color .gray)
+                                            Image("placeholder")
                                         }
-    //                                    .cancelOnDisappear(true)
+                                        .cancelOnDisappear(true)
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: 75, height: 74)
@@ -43,15 +44,24 @@ struct MainView: View {
     //                                    SectionView(section: item)
     //                                }
                             }
-                        }.navigationTitle("BEERS")
+                            
+                        }
+                        .navigationTitle("BEERS")
+                        .pullToRefresh(isShowing: $isShowing) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                self.beersData.getBeers()
+                                self.isShowing = false
+                            }
+                        }
                     }
                 case "error":
                     Text("Something went wrong!")
+                    //AGGIUGNERE ANIMAZIONE
                 default:
                     Text("Loading data")
+                    //AGGIUGNERE ANIMAZIONE
             }
         }
-        .onAppear { self.beersData.getBeers() }
     }
 }
 

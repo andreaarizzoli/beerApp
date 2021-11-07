@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05243A5527373B5C00841C60 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 05243A5427373B5C00841C60 /* SwiftUIRefresh */; };
 		058A75922734A93300E9A52B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A75912734A93300E9A52B /* AppDelegate.swift */; };
 		058A75942734A93300E9A52B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A75932734A93300E9A52B /* SceneDelegate.swift */; };
 		058A75962734A93300E9A52B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A75952734A93300E9A52B /* MainView.swift */; };
@@ -44,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05243A5527373B5C00841C60 /* SwiftUIRefresh in Frameworks */,
 				05DE10EA2736DD4E00F9075C /* Kingfisher in Frameworks */,
 				058A75AD2734A9A600E9A52B /* SwiftyJSON in Frameworks */,
 				058A75AA2734A97B00E9A52B /* Alamofire in Frameworks */,
@@ -140,6 +142,7 @@
 				058A75A92734A97B00E9A52B /* Alamofire */,
 				058A75AC2734A9A600E9A52B /* SwiftyJSON */,
 				05DE10E92736DD4E00F9075C /* Kingfisher */,
+				05243A5427373B5C00841C60 /* SwiftUIRefresh */,
 			);
 			productName = beerApp;
 			productReference = 058A758E2734A93300E9A52B /* beerApp.app */;
@@ -172,6 +175,7 @@
 				058A75A82734A97B00E9A52B /* XCRemoteSwiftPackageReference "Alamofire" */,
 				058A75AB2734A9A600E9A52B /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				05DE10E82736DD4E00F9075C /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				05243A5327373B5C00841C60 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
 			);
 			productRefGroup = 058A758F2734A93300E9A52B /* Products */;
 			projectDirPath = "";
@@ -407,6 +411,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		05243A5327373B5C00841C60 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/timbersoftware/SwiftUIRefresh.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.3;
+			};
+		};
 		058A75A82734A97B00E9A52B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -434,6 +446,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		05243A5427373B5C00841C60 /* SwiftUIRefresh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05243A5327373B5C00841C60 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */;
+			productName = SwiftUIRefresh;
+		};
 		058A75A92734A97B00E9A52B /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 058A75A82734A97B00E9A52B /* XCRemoteSwiftPackageReference "Alamofire" */;

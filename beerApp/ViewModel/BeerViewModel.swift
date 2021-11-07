@@ -13,7 +13,11 @@ import SwiftyJSON
 class BeerViewModel :ObservableObject {
     
     @Published var beers : [BeerModel] = []
-    @Published var status = ""
+    @Published var status = "loading"
+    
+    init() {
+        getBeers()
+    }
 
     func getBeers(){
         
@@ -21,7 +25,6 @@ class BeerViewModel :ObservableObject {
         let endpoint = "https://api.punkapi.com/v2/beers"
         let headers: HTTPHeaders = ["Content-Type": "application/json"]
         status = "loading"
-
 
         AF.request(endpoint, method: .get, encoding: JSONEncoding.default, headers: headers)
             .validate()
@@ -35,10 +38,10 @@ class BeerViewModel :ObservableObject {
     //                        print("Struttura originale del JSON \(String(data: response.data!, encoding: .utf8)!)")
                         let data = try jsonDecoder.decode([BeerModel].self, from: response.data!)
     //                        print("Struttura convertita del JSON \(data)")
-                        DispatchQueue.main.async {
-                            self.beers = data
-                            self.status = "loaded"
-                        }
+                        self.beers = data
+//                        self.savedData()
+
+                        self.status = "loaded"
                     }
                     catch
                     {
@@ -48,7 +51,6 @@ class BeerViewModel :ObservableObject {
                 case .failure(let error):
                     print("Errore nella risposta da server: \(error.localizedDescription)")
                     self.status = "error"
-                    self.savedData()
             }
         }
     }
@@ -57,12 +59,12 @@ class BeerViewModel :ObservableObject {
         //DA ELIMINARE  <---------------
     func savedData() {
         beers = [
-        BeerModel(id: 1, name: "Peroni", tagline: "-", first_brewed: "-", description: "sldfkasòk", image_url: "fdlòksafjd"),
-        BeerModel(id: 2, name: "Nastro Azzurro", tagline: "-", first_brewed: "-", description: "sldfkasòk", image_url: "fdlòksafjd"),
-        BeerModel(id: 3, name: "Moretti", tagline: "-", first_brewed: "-", description: "sldfkasòk", image_url: "fdlòksafjd")
+        BeerModel(id: 1, name: "Peroni", tagline: "-", first_brewed: "-", description: "sldfkasòk", image_url: "https://images.punkapi.com/v2/2.png"),
+        BeerModel(id: 2, name: "Nastro Azzurro", tagline: "-", first_brewed: "-", description: "sldfkasòk", image_url: "https://images.punkapi.com/v2/2.png"),
+        BeerModel(id: 3, name: "Moretti", tagline: "-", first_brewed: "-", description: "sldfkasòk", image_url: nil)
         ]
-        print("List of beers: \(beers)")
-        print("total beer \(beers.count)")
+//        print("List of beers: \(beers)")
+//        print("total beer \(beers.count)")
     }
     
 }
