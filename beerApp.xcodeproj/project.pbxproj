@@ -10,6 +10,8 @@
 		05243A5527373B5C00841C60 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 05243A5427373B5C00841C60 /* SwiftUIRefresh */; };
 		052960B42737E32A00087D03 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 052960B32737E32A00087D03 /* loading.json */; };
 		052960B62737E33000087D03 /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = 052960B52737E33000087D03 /* error.json */; };
+		056465682738873B000EDC65 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056465672738873B000EDC65 /* DetailView.swift */; };
+		0564656A2738880D000EDC65 /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056465692738880D000EDC65 /* ListItemView.swift */; };
 		058A75922734A93300E9A52B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A75912734A93300E9A52B /* AppDelegate.swift */; };
 		058A75942734A93300E9A52B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A75932734A93300E9A52B /* SceneDelegate.swift */; };
 		058A75962734A93300E9A52B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A75952734A93300E9A52B /* MainView.swift */; };
@@ -31,6 +33,8 @@
 /* Begin PBXFileReference section */
 		052960B32737E32A00087D03 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		052960B52737E33000087D03 /* error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error.json; sourceTree = "<group>"; };
+		056465672738873B000EDC65 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		056465692738880D000EDC65 /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 		058A758E2734A93300E9A52B /* beerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = beerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		058A75912734A93300E9A52B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		058A75932734A93300E9A52B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 				05ABFA872736ABAF00E1E8AA /* ManagerView.swift */,
 				05ABFA892736AE9500E1E8AA /* SplashView.swift */,
 				058A75952734A93300E9A52B /* MainView.swift */,
+				056465692738880D000EDC65 /* ListItemView.swift */,
+				056465672738873B000EDC65 /* DetailView.swift */,
 				05A4D4A52737DFF000C737E3 /* Lottie */,
 			);
 			path = View;
@@ -230,7 +236,9 @@
 				058A75922734A93300E9A52B /* AppDelegate.swift in Sources */,
 				05ABFA8A2736AE9500E1E8AA /* SplashView.swift in Sources */,
 				05A4D4A72737E00A00C737E3 /* LottieView.swift in Sources */,
+				056465682738873B000EDC65 /* DetailView.swift in Sources */,
 				058A75B22734A9F500E9A52B /* BeerViewModel.swift in Sources */,
+				0564656A2738880D000EDC65 /* ListItemView.swift in Sources */,
 				058A75942734A93300E9A52B /* SceneDelegate.swift in Sources */,
 				058A75962734A93300E9A52B /* MainView.swift in Sources */,
 				058A75992734A93300E9A52B /* beerApp.xcdatamodeld in Sources */,
