@@ -35,11 +35,11 @@ class BeerViewModel :ObservableObject {
                 case .success(_):
                     do {
                         let jsonDecoder = JSONDecoder()
-    //                        print("Struttura originale del JSON \(String(data: response.data!, encoding: .utf8)!)")
+//                        print("Struttura originale del JSON \(String(data: response.data!, encoding: .utf8)!)")
                         let data = try jsonDecoder.decode([BeerModel].self, from: response.data!)
-    //                        print("Struttura convertita del JSON \(data)")
-//                        self.beers = data
-                        self.testData()
+//                        print("Struttura convertita del JSON \(data)")
+                        self.beers = data
+//                        self.fakeData()
                         self.status = "loaded"
                         self.saveData()
                     }
@@ -58,11 +58,9 @@ class BeerViewModel :ObservableObject {
 
     //MARK: - FAKE DATA FOR TESTS
     
-    func testData() {
+    func fakeData() {
         beers = [
-        BeerModel(id: 1, name: "Peroni", tagline: "dlafhaso", first_brewed: "-", description: nil, image_url: "https://images.punkapi.com/v2/2.png"),
-        BeerModel(id: 2, name: nil, tagline: "sdflashdfò", first_brewed: "-", description: "sldfkasòk", image_url: "https://images.punkapi.com/v2/2.png"),
-        BeerModel(id: 3, name: "Moretti", tagline: nil, first_brewed: "-", description: "sldfkasòk", image_url: nil)
+            BeerModel(id: 1, name: nil, tagline: nil, first_brewed: nil, description: nil, image_url: nil, abv: nil, ibu: nil, srm: nil, food_pairing: nil, brewers_tips: nil)
         ]
     }
     

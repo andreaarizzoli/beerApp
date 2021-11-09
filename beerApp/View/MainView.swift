@@ -22,31 +22,8 @@ struct MainView: View {
                     NavigationView {
                         List {
                             ForEach(self.beersData.beers, id:\.self) { beer in
-                                HStack {
-                                    KFImage(URL(string: beer.image_url ?? "https://images.punkapi.com/v2/keg.png"))
-                                        .placeholder{
-                                            Image("placeholder")
-                                            Text("Loading")
-                                        }
-                                        .cancelOnDisappear(true)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 75, height: 74)
-                                        .cornerRadius(20)
-                                    VStack (alignment: .leading, spacing: 2){
-                                        Text(beer.name ?? "Name not available")
-                                               .bold()
-                                        Spacer()
-                                        Text(beer.tagline ?? "Description not available")
-                                            .font(.subheadline).foregroundColor(.gray)
-                                    }.padding(.vertical)
-                                }.padding(3)
-                                
-    //                                NavigationLink (destination: item.destination){
-    //                                    SectionView(section: item)
-    //                                }
+                                ListItemView(beer: beer)
                             }
-                            
                         }
                         .navigationTitle("BEERS")
                         .pullToRefresh(isShowing: $isShowing) {
@@ -73,6 +50,8 @@ struct MainView: View {
                     }
                 default:
                     LottieView(name: "loading", loopMode: .loop)
+                        .frame(width: 200, height: 200, alignment: .center)
+
             }
         }
     }
