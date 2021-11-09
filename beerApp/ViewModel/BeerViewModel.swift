@@ -56,7 +56,7 @@ class BeerViewModel :ObservableObject {
     }
     
 
-    //MARK: - FAKE DATA FOR TESTS
+    //MARK: - FAKE DATA FOR ERROR'S TEST
     
     func fakeData() {
         beers = [

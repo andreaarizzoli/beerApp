@@ -18,12 +18,5 @@ struct BeerModel: Hashable, Codable {
     var ibu: Float!
     var srm: Float!
     var food_pairing: [String]!
-    var brewers_tips: String!
-    
-    
-    
+    var brewers_tips: String!  
 }
-
-
-// ADD ingredienti
-

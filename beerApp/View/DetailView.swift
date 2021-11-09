@@ -19,6 +19,7 @@ struct DetailView: View {
                 .placeholder{
                     Image("placeholder")
                     Text("Loading")
+                        .font(.subheadline)
                 }
                 .resizable()
                 .aspectRatio(contentMode: .fit)
