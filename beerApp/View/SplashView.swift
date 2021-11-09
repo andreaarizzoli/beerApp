@@ -9,7 +9,10 @@ import SwiftUI
 
 struct SplashView: View {
     var body: some View {
-        Text("BEER APP")
+        Image("logo")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 200, height: 200, alignment: .center)
     }
 }
 
